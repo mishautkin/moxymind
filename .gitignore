@@ -1,8 +1,11 @@
-
-# Playwright
-node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+.idea
+.vscode
+node_modules
+playwright-report*
+playwright/.cache
 storage-state*
+test-results
+
+.env*
+!.env.example
+.DS_Store
