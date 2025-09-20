@@ -1,0 +1,24 @@
+{
+  "name": "moxymind",
+  "version": "1.0.0",
+  "description": "Moxymind technical tasks",
+  "main": "index.js",
+  "author": "@mishautkin",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^24.0.3",
+    "eslint": "^8.57.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  },
+  "scripts": {
+    "setup:tests": "npm install && npx playwright install",
+    "lint": "eslint . --ext .ts,.tsx,.mjs",
+    "lint:fix": "eslint . --ext .ts,.tsx,.mjs --fix",
+    "test:saucedemo": "npx playwright test --project=saucedemo"
+  }
+}
