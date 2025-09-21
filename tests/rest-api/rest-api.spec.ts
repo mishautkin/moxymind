@@ -1,6 +1,5 @@
 import { test, expect } from '../../utils/test';
 import { generateUniqueUserData, testData } from './_test.data';
-import { CreateUserResponse } from '../../resources/types';
   
 test.beforeAll(async ( { restClient } ) => {
   // Validate API accessibility before running tests
@@ -149,7 +148,7 @@ test.describe( 'POST - Create User', () => {
     expect( response1.id ).not.toBe(response2.id);
   } );
 
-  test( 'REST-08 | Validate response status and headers for POST', async ( { restClient, request } ) => {
+  test( 'REST-08 | Validate response status and headers for POST', async ( { restClient } ) => {
     const userData = testData.alternativeUser;
     
     const apiResponse = await restClient.makeRequest( 'post', '/users', userData);

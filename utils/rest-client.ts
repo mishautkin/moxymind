@@ -46,8 +46,8 @@ export class RestClient {
    */
   async getUsers( page?: number, perPage?: number ): Promise< ListUsersResponse > {
     const params = new URLSearchParams();
-    if ( page ) params.append( 'page', page.toString() );
-    if ( perPage ) params.append( 'per_page', perPage.toString() );
+    if ( page ) { params.append( 'page', page.toString() ); }
+    if ( perPage ) { params.append( 'per_page', perPage.toString() ); }
     
     const queryString = params.toString() ? `?${ params.toString() }` : '';
     
@@ -81,7 +81,7 @@ export class RestClient {
    * @returns Promise<CreateUserResponse>
    */
   async createUser( userData: CreateUserRequest ): Promise< CreateUserResponse > {
-    const response = await this.makeRequest( 'post', `/users`, userData);
+    const response = await this.makeRequest( 'post', '/users', userData);
     
     if ( ! response.ok ) {
       throw new Error( `POST /users failed with status ${ response.status }: ${ response.statusText }` );
