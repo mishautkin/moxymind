@@ -21,6 +21,9 @@ jobs:
 
     - name: Run Saucedemo tests
       run: npm run test:saucedemo
+      env:
+        BASE_URL_SAUCEDEMO: ${{ vars.BASE_URL_SAUCEDEMO }}
+        STORAGE_STATE_SAUCEDEMO: ${{ vars.STORAGE_STATE_SAUCEDEMO }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
