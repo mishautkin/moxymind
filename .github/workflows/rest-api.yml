@@ -23,7 +23,7 @@ jobs:
       run: npm run test:restapi
       env:
         BASE_URL_SAUCEDEMO: ${{ vars.BASE_URL_RESTAPI }}
-        STORAGE_STATE_SAUCEDEMO: ${{ secrets.RESTAPI_KEY }}
+        RESTAPI_KEY: ${{ secrets.RESTAPI_KEY }}
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
