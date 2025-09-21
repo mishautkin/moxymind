@@ -8,3 +8,4 @@ export * from './cart-page';
 export * from './checkout-page-1';
 export * from './checkout-page-2';
 export * from './checkout-page-3';
+export * from './rest-client';

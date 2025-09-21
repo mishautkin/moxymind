@@ -10,6 +10,8 @@
   - [Installation](#installation)
   - [Project Structure](#project-structure)
 - [Running Tests](#running-tests)
+  - [Parallel Execution](#parallel-execution)
+  - [Run all tests](#run-all-tests)
   - [Saucedemo Test Execution](#saucedemo-test-execution)
   - [REST API Test Execution](#rest-api-test-execution)
   - [Test Filtering](#test-filtering)
@@ -21,7 +23,10 @@
 
 ## Overview
 
-Repository with technical tasks accomplished by M. Utkin for Moxymind.
+Repository with technical tasks accomplished by M. Utkin.
+
+- **Test framework:** Playwright + Typescript
+- **Execution options:** local + CI/CD (GitHub Actions)
 
 ## Technical task #1
 
@@ -61,12 +66,12 @@ moxymind/
 │   │   ├── _test.setup.ts         # Saucedemo storage state setup
 │   │   ├── _test.data.ts          # Saucedemo test data
 │   │   └── saucedemo.spec.ts      # Saucedemo test suite
-│   ├── restapi/
-│   │   ├── _test.setup.ts         # REST API storage state setup
+│   ├── rest-api/
 │   │   ├── _test.data.ts          # REST API test data
-│   │   └── restapi.spec.ts        # REST API test suite
+│   │   └── rest-api.spec.ts        # REST API test suite
 ├── utils/
 │   ├── test.ts                    # Playwright Test fixtures
+│   ├── rest-client.ts             # REST API client class
 │   ├── base-page.ts               # Parent POM class for other page fixtures
 │   ├── login-page.ts              # POM class for loginPage fixture
 │   ├── inventory-page.ts          # POM class for inventoryPage fixture
@@ -79,11 +84,43 @@ moxymind/
 
 ## Running Tests
 
-### Saucedemo Test Execution
+### Parallel Execution
+
+All given tests can be executed in parallel.
+
+Parallel execution can be configured in `playwright.config.ts`:
+
+- Enable/disable parallel execution by `fullyParallel` param.
+- Number of tests running in parallel by `workers` param.
+
+**Alternative CLI commands:**
+
+```bash
+# Run all Saucedemo tests using 1 worker (non-parallel)
+npx playwright test --project=saucedemo* --workers=1
+```
+
+## Run all tests
 
 ```bash
 # Run all tests
+npm run test:all
+```
+
+### Saucedemo Test Execution
+
+```bash
+# Run all Saucedemo tests
 npm run test:saucedemo
+
+# Run Saucedemo tests only in Chrome 
+npm run test:saucedemo:chrome
+
+# Run Saucedemo tests only in Firefox 
+npm run test:saucedemo:firefox
+
+# Run Saucedemo tests only in Safari 
+npm run test:saucedemo:webkit
 ```
 
 ### REST API Test Execution
@@ -97,10 +134,10 @@ npm run test:restapi
 
 ```bash
 # Run specific test case
-npx playwright test --grep "TC-01"
+npx playwright test --grep "TC-01" --project=saucedemo-chrome
 
 # Run specific test case in debug mode
-npx playwright test --grep "TC-01" --debug
+npx playwright test --grep "TC-01" --project=saucedemo-chrome --debug
 ```
 
 ## Test Reports
@@ -126,37 +163,16 @@ BASE_URL_SAUCEDEMO='https://www.saucedemo.com' # test site base URL
 STORAGE_STATE_SAUCEDEMO='./storage-state-saucedemo.json' # storage state file
 
 # REST API vars
-BASE_URL_RESTAPI='https://reqres.in' # test site base URL
-STORAGE_STATE_RESTAPI='./storage-state-restapi.json' # storage state file
+BASE_URL_RESTAPI='https://reqres.in/api' # test site base URL
+RESTAPI_KEY='***' # API key (free API key: reqres-free-v1)
 ```
 
 ## CI/CD Integration
 
-### GitHub Actions Example
+Two GitHub Action workflows are located in [`./.github`](./.github/workflows/) directory.
 
-```yaml
-name: Playwright Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npm test
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-```
+- Workflows are triggered on push to main branch
+- Workflows require environment variables and secrets (see [Environment Variables](#environment-variables) section) to be added on GutHub.
 
 ## Coding standards
 
