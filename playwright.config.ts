@@ -28,8 +28,6 @@ export default defineConfig < TestExtend > ( {
     testIdAttribute: 'data-test',
 
     baseURL: process.env.BASE_URL_SAUCEDEMO,
-
-    storageState: process.env.STORAGE_STATE_SAUCEDEMO,
   },
 
   /* Configure projects for major browsers */
@@ -46,19 +44,28 @@ export default defineConfig < TestExtend > ( {
       name: 'saucedemo-chrome',
       dependencies: [ 'setup-saucedemo' ],
       testMatch: /saucedemo\.spec\.ts/,
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: process.env.STORAGE_STATE_SAUCEDEMO,
+      },
     },
     {
       name: 'saucedemo-firefox',
       dependencies: [ 'setup-saucedemo' ],
       testMatch: /saucedemo\.spec\.ts/,
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        ...devices['Desktop Firefox'],
+        storageState: process.env.STORAGE_STATE_SAUCEDEMO,
+      },
     },
     {
       name: 'saucedemo-webkit',
       dependencies: [ 'setup-saucedemo' ],
       testMatch: /saucedemo\.spec\.ts/,
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        storageState: process.env.STORAGE_STATE_SAUCEDEMO,
+      },
     },
 
     /* Test against mobile viewports. */
