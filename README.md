@@ -23,10 +23,10 @@
 
 ## Overview
 
-Repository with technical tasks accomplished by M. Utkin for Moxymind.
+Repository with technical tasks accomplished by M. Utkin.
 
 - **Test framework:** Playwright + Typescript
-- **Execution options:** local and CI/CD (GitHub Actions)
+- **Execution options:** local + CI/CD (GitHub Actions)
 
 ## Technical task #1
 
@@ -66,10 +66,9 @@ moxymind/
 │   │   ├── _test.setup.ts         # Saucedemo storage state setup
 │   │   ├── _test.data.ts          # Saucedemo test data
 │   │   └── saucedemo.spec.ts      # Saucedemo test suite
-│   ├── restapi/
-│   │   ├── _test.setup.ts         # REST API storage state setup
+│   ├── rest-api/
 │   │   ├── _test.data.ts          # REST API test data
-│   │   └── restapi.spec.ts        # REST API test suite
+│   │   └── rest-api.spec.ts        # REST API test suite
 ├── utils/
 │   ├── test.ts                    # Playwright Test fixtures
 │   ├── rest-client.ts             # REST API client class
@@ -170,31 +169,10 @@ RESTAPI_KEY='***' # API key (free API key: reqres-free-v1)
 
 ## CI/CD Integration
 
-### GitHub Actions Example
+Two GitHub Action workflows are located in [`./.github`](./.github/workflows/) directory.
 
-```yaml
-name: Playwright Tests
-on: [push, pull_request]
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npm test
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-```
+- Workflows are triggered on push to main branch
+- Workflows require environment variables and secrets (see [Environment Variables](#environment-variables) section) to be added on GutHub.
 
 ## Coding standards
 
