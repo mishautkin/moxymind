@@ -1,6 +1,9 @@
 import { expect } from '@playwright/test';
 import { BasePage } from './base-page';
 
+/**
+ * Login page POM class
+ */
 export class LoginPage extends BasePage {
   url = '/';
 

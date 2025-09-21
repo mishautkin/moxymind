@@ -3,6 +3,7 @@ import { TestExtend } from '../resources/types';
 import {
 	LoginPage,
 	InventoryPage,
+  InventoryItem,
 	SideMenu,
 	CartPage,
 	CheckoutPage1,
@@ -16,6 +17,9 @@ const test = base.extend< TestExtend > ( {
   },
   inventoryPage: async ( { page }, use ) => {
     await use( new InventoryPage( { page } ) );
+  },
+  inventoryItem: async ( { page }, use ) => {
+    await use( new InventoryItem( { page } ) );
   },
   sideMenu: async ( { page }, use ) => {
     await use( new SideMenu( { page } ) );

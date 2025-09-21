@@ -2,6 +2,7 @@ export * from './test';
 export * from './base-page';
 export * from './login-page';
 export * from './inventory-page';
+export * from './inventory-item';
 export * from './side-menu';
 export * from './cart-page';
 export * from './checkout-page-1';

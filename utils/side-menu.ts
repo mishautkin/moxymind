@@ -1,5 +1,8 @@
 import { expect, Page } from '@playwright/test';
 
+/**
+ * Side menu component
+ */
 export class SideMenu {
   page: Page;
 

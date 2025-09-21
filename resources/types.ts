@@ -2,6 +2,7 @@
 import {
 	LoginPage,
 	InventoryPage,
+	InventoryItem,
 	SideMenu,
 	CartPage,
 	CheckoutPage1,
@@ -12,6 +13,7 @@ import {
 export type TestExtend = {
 	loginPage: LoginPage;
 	inventoryPage: InventoryPage;
+	inventoryItem: InventoryItem;
 	sideMenu: SideMenu;
 	cartPage: CartPage;
 	checkoutPage1: CheckoutPage1;

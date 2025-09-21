@@ -61,6 +61,7 @@ test.describe( 'Web-shop tests', () => {
     'TC-02 | Product browsing and cart management',
     async ( {
       inventoryPage,
+      inventoryItem,
       cartPage,
     } ) => {
       const { backpack, bikeLight, tshirt } = products;
@@ -69,20 +70,20 @@ test.describe( 'Web-shop tests', () => {
       
       await test.step( 'Add items to cart and verify count', async () => {
         // Add first item
-        await inventoryPage.addItemToCart( backpack.slug );
+        await inventoryItem.addItemToCart( backpack.slug );
         await expect( await inventoryPage.getCartItemCount() ).toEqual( 1 );
 
         // Add second item
-        await inventoryPage.addItemToCart( bikeLight.slug );
+        await inventoryItem.addItemToCart( bikeLight.slug );
         await expect( await inventoryPage.getCartItemCount() ).toEqual( 2 );
 
         // Add third item
-        await inventoryPage.addItemToCart( tshirt.slug );
+        await inventoryItem.addItemToCart( tshirt.slug );
         await expect( await inventoryPage.getCartItemCount() ).toEqual( 3 );
       } );
 
       await test.step( 'Remove item from inventory page', async () => {
-        await inventoryPage.removeItemFromCart( bikeLight.slug );
+        await inventoryItem.removeItemFromCart( bikeLight.slug );
         await expect( await inventoryPage.getCartItemCount() ).toEqual( 2 );
       } );
 
@@ -100,7 +101,7 @@ test.describe( 'Web-shop tests', () => {
 
       // Test 2.4: Remove item from cart page
       await test.step('Remove item from cart page', async () => {
-        await cartPage.removeItemFromCart( tshirt.slug );
+        await inventoryItem.removeItemFromCart( tshirt.slug );
         await expect( await cartPage.getCartItemCount() ).toBe( 1 );
         await expect( cartPage.page.getByText( tshirt.name ) ).not.toBeVisible();
       } );
@@ -110,6 +111,7 @@ test.describe( 'Web-shop tests', () => {
     'TC-03 | Complete checkout process',
     async ( {
       inventoryPage,
+      inventoryItem,
       cartPage,
       checkoutPage1,
       checkoutPage2,
@@ -120,8 +122,8 @@ test.describe( 'Web-shop tests', () => {
       await inventoryPage.visit();
       
       await test.step('Add items for checkout', async () => {
-        await inventoryPage.addItemToCart( backpack.slug );
-        await inventoryPage.addItemToCart( jacket.slug );
+        await inventoryItem.addItemToCart( backpack.slug );
+        await inventoryItem.addItemToCart( jacket.slug );
         await expect( await inventoryPage.getCartItemCount() ).toBe( 2 );
       });
 

@@ -1,6 +1,9 @@
 import { expect } from '@playwright/test';
 import { BasePage } from './base-page';
 
+/**
+ * Checkout Step 3 page POM class
+ */
 export class CheckoutPage3 extends BasePage {
   url = '/checkout-complete.html';
   title = 'Checkout: Complete!';
