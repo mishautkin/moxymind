@@ -9,6 +9,7 @@ import {
 	CheckoutPage1,
 	CheckoutPage2,
 	CheckoutPage3,
+  RestClient,
 } from '.';
 
 const test = base.extend< TestExtend > ( {
@@ -35,6 +36,9 @@ const test = base.extend< TestExtend > ( {
   },
   checkoutPage3: async ( { page }, use ) => {
     await use( new CheckoutPage3( { page } ) );
+  },
+  restClient: async ( { request }, use ) => {
+    await use( new RestClient( { request } ) );
   },
 } );
 

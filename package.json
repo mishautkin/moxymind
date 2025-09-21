@@ -19,6 +19,7 @@
     "setup:tests": "npm install && npx playwright install",
     "lint": "eslint . --ext .ts,.tsx,.mjs",
     "lint:fix": "eslint . --ext .ts,.tsx,.mjs --fix",
-    "test:saucedemo": "npx playwright test --project=saucedemo"
+    "test:saucedemo": "npx playwright test --project=saucedemo",
+    "test:restapi": "npx playwright test --project=restapi"
   }
 }

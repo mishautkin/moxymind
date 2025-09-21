@@ -40,6 +40,7 @@ export default defineConfig < TestExtend > ( {
     {
       name: 'saucedemo',
       dependencies: [ 'setup-saucedemo' ],
+      testMatch: /saucedemo\.spec\.ts/,
       use: {
         ...devices['Desktop Chrome'],
         baseURL: process.env.BASE_URL_SAUCEDEMO,
@@ -48,12 +49,7 @@ export default defineConfig < TestExtend > ( {
     },
     {
       name: 'restapi',
-      // dependencies: [ 'setup' ],
-      use: {
-        ...devices['Desktop Chrome'],
-        baseURL: process.env.BASE_URL_RESTAPI,
-        storageState: process.env.STORAGE_STATE_RESTAPI,
-      },
+      testMatch: /rest-api\.spec\.ts/,
     },
 
     // {

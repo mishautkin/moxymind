@@ -130,8 +130,8 @@ BASE_URL_SAUCEDEMO='https://www.saucedemo.com' # test site base URL
 STORAGE_STATE_SAUCEDEMO='./storage-state-saucedemo.json' # storage state file
 
 # REST API vars
-BASE_URL_RESTAPI='https://reqres.in' # test site base URL
-STORAGE_STATE_RESTAPI='./storage-state-restapi.json' # storage state file
+BASE_URL_RESTAPI='https://reqres.in/api' # test site base URL
+RESTAPI_KEY='***' # API key (free API key: reqres-free-v1)
 ```
 
 ## CI/CD Integration
