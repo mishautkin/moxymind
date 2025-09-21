@@ -22,7 +22,7 @@ jobs:
     - name: Run REST API tests
       run: npm run test:restapi
       env:
-        BASE_URL_SAUCEDEMO: ${{ vars.BASE_URL_RESTAPI }}
+        BASE_URL_RESTAPI: ${{ vars.BASE_URL_RESTAPI }}
         RESTAPI_KEY: ${{ secrets.RESTAPI_KEY }}
 
     - uses: actions/upload-artifact@v4
