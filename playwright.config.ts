@@ -8,13 +8,13 @@ require( 'dotenv' ).config();
 export default defineConfig < TestExtend > ( {
   testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: false,
+  fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     [ 'html' ],
@@ -26,41 +26,40 @@ export default defineConfig < TestExtend > ( {
     trace: 'on-first-retry',
 
     testIdAttribute: 'data-test',
+
+    baseURL: process.env.BASE_URL_SAUCEDEMO,
+
+    storageState: process.env.STORAGE_STATE_SAUCEDEMO,
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'setup-saucedemo',
-      testMatch: /_test\.setup\.ts/,
-      use: {
-        baseURL: process.env.BASE_URL_SAUCEDEMO,
-      }
-    },
-    {
-      name: 'saucedemo',
-      dependencies: [ 'setup-saucedemo' ],
-      testMatch: /saucedemo\.spec\.ts/,
-      use: {
-        ...devices['Desktop Chrome'],
-        baseURL: process.env.BASE_URL_SAUCEDEMO,
-        storageState: process.env.STORAGE_STATE_SAUCEDEMO,
-      },
-    },
-    {
       name: 'restapi',
       testMatch: /rest-api\.spec\.ts/,
     },
-
-    // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
-    // },
-
-    // {
-    //   name: 'webkit',
-    //   use: { ...devices['Desktop Safari'] },
-    // },
+    {
+      name: 'setup-saucedemo',
+      testMatch: /_test\.setup\.ts/,
+    },
+    {
+      name: 'saucedemo-chrome',
+      dependencies: [ 'setup-saucedemo' ],
+      testMatch: /saucedemo\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'saucedemo-firefox',
+      dependencies: [ 'setup-saucedemo' ],
+      testMatch: /saucedemo\.spec\.ts/,
+      use: { ...devices['Desktop Firefox'] },
+    },
+    {
+      name: 'saucedemo-webkit',
+      dependencies: [ 'setup-saucedemo' ],
+      testMatch: /saucedemo\.spec\.ts/,
+      use: { ...devices['Desktop Safari'] },
+    },
 
     /* Test against mobile viewports. */
     // {

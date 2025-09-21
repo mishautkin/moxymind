@@ -57,7 +57,7 @@ export class RestClient {
       throw new Error( `GET /users failed with status ${ response.status }: ${ response.statusText }` );
     }
     
-    return await response.body as ListUsersResponse;
+    return response.body as ListUsersResponse;
   }
 
   /**
@@ -72,7 +72,7 @@ export class RestClient {
       throw new Error( `GET /users/${ userId } failed with status ${ response.status }: ${ response.statusText }`);
     }
     
-    return await response.body as SingleUserResponse;
+    return response.body as SingleUserResponse;
   }
 
   /**
@@ -81,17 +81,12 @@ export class RestClient {
    * @returns Promise<CreateUserResponse>
    */
   async createUser( userData: CreateUserRequest ): Promise< CreateUserResponse > {
-    const response = await this.makeRequest( 'post', `/user`, {
-      data: userData,
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+    const response = await this.makeRequest( 'post', `/users`, userData);
     
     if ( ! response.ok ) {
       throw new Error( `POST /users failed with status ${ response.status }: ${ response.statusText }` );
     }
     
-    return await response.body as CreateUserResponse;
+    return response.body as CreateUserResponse;
   }
 }

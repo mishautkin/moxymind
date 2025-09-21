@@ -55,8 +55,10 @@ export interface CreateUserRequest {
   job: string;
 }
 
-export interface CreateUserResponse extends CreateUserRequest {
+export interface CreateUserResponse {
   id: string;
+  name: string;
+  job: string;
   createdAt: string;
 }
 

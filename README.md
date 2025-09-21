@@ -10,6 +10,8 @@
   - [Installation](#installation)
   - [Project Structure](#project-structure)
 - [Running Tests](#running-tests)
+  - [Parallel Execution](#parallel-execution)
+  - [Run all tests](#run-all-tests)
   - [Saucedemo Test Execution](#saucedemo-test-execution)
   - [REST API Test Execution](#rest-api-test-execution)
   - [Test Filtering](#test-filtering)
@@ -83,11 +85,43 @@ moxymind/
 
 ## Running Tests
 
-### Saucedemo Test Execution
+### Parallel Execution
+
+All given tests can be executed in parallel.
+
+Parallel execution can be configured in `playwright.config.ts`:
+
+- Enable/disable parallel execution by `fullyParallel` param.
+- Number of tests running in parallel by `workers` param.
+
+**Alternative CLI commands:**
+
+```bash
+# Run all Saucedemo tests using 1 worker (non-parallel)
+npx playwright test --project=saucedemo* --workers=1
+```
+
+## Run all tests
 
 ```bash
 # Run all tests
+npm run test:all
+```
+
+### Saucedemo Test Execution
+
+```bash
+# Run all Saucedemo tests
 npm run test:saucedemo
+
+# Run Saucedemo tests only in Chrome 
+npm run test:saucedemo:chrome
+
+# Run Saucedemo tests only in Firefox 
+npm run test:saucedemo:firefox
+
+# Run Saucedemo tests only in Safari 
+npm run test:saucedemo:webkit
 ```
 
 ### REST API Test Execution
@@ -101,10 +135,10 @@ npm run test:restapi
 
 ```bash
 # Run specific test case
-npx playwright test --grep "TC-01"
+npx playwright test --grep "TC-01" --project=saucedemo-chrome
 
 # Run specific test case in debug mode
-npx playwright test --grep "TC-01" --debug
+npx playwright test --grep "TC-01" --project=saucedemo-chrome --debug
 ```
 
 ## Test Reports

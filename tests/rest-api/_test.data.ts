@@ -15,7 +15,7 @@ export const testData = {
 
   // User with special characters
   specialCharUser: {
-    name: 'Erik Remark',
+    name: 'José María',
     job: 'Senior Architect'
   } as CreateUserRequest,
 
@@ -33,7 +33,7 @@ export const testData = {
     totalPages: 2,
     knownUserIds: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ],
     knownUserEmail: 'janet.weaver@reqres.in', // User ID 2
-    supportUrl: 'https://reqres.in/#support-heading',
+    supportUrl: 'https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral',
     contentType: 'application/json; charset=utf-8'
   },
 

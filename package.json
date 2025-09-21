@@ -19,7 +19,11 @@
     "setup:tests": "npm install && npx playwright install",
     "lint": "eslint . --ext .ts,.tsx,.mjs",
     "lint:fix": "eslint . --ext .ts,.tsx,.mjs --fix",
-    "test:saucedemo": "npx playwright test --project=saucedemo",
-    "test:restapi": "npx playwright test --project=restapi"
+    "test:all": "npx playwright test",
+    "test:restapi": "npx playwright test --project=restapi",
+    "test:saucedemo": "npx playwright test --project=saucedemo-*",
+    "test:saucedemo:chrome": "npx playwright test --project=saucedemo-chrome",
+    "test:saucedemo:firefox": "npx playwright test --project=saucedemo-firefox",
+    "test:saucedemo:webkit": "npx playwright test --project=saucedemo-webkit"
   }
 }
