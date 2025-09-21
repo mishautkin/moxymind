@@ -23,6 +23,9 @@
 
 Repository with technical tasks accomplished by M. Utkin for Moxymind.
 
+- **Test framework:** Playwright + Typescript
+- **Execution options:** local and CI/CD (GitHub Actions)
+
 ## Technical task #1
 
 Frontend test automation - [see `docs/`](./docs/sausedemo.md).
@@ -67,6 +70,7 @@ moxymind/
 │   │   └── restapi.spec.ts        # REST API test suite
 ├── utils/
 │   ├── test.ts                    # Playwright Test fixtures
+│   ├── rest-client.ts             # REST API client class
 │   ├── base-page.ts               # Parent POM class for other page fixtures
 │   ├── login-page.ts              # POM class for loginPage fixture
 │   ├── inventory-page.ts          # POM class for inventoryPage fixture
