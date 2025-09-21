@@ -66,9 +66,11 @@ moxymind/
 │   │   ├── _test.data.ts          # REST API test data
 │   │   └── restapi.spec.ts        # REST API test suite
 ├── utils/
-│   ├── test.ts                    # Test fixtures
-│   ├── base-page.ts               # POM class for page fixture
-│   └── ...                        # Other POM classes
+│   ├── test.ts                    # Playwright Test fixtures
+│   ├── base-page.ts               # Parent POM class for other page fixtures
+│   ├── login-page.ts              # POM class for loginPage fixture
+│   ├── inventory-page.ts          # POM class for inventoryPage fixture
+│   └── ...                        # Other POM files, utils and helpers
 ├── playwright.config.ts           # Playwright configuration
 ├── package.json                   # Dependencies and scripts
 ├── tsconfig.json                  # TypeScript configuration
