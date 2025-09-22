@@ -76,7 +76,7 @@ moxymind/
 │   │   └── saucedemo.spec.ts      # Saucedemo test suite
 │   ├── rest-api/
 │   │   ├── _test.data.ts          # REST API test data
-│   │   └── rest-api.spec.ts        # REST API test suite
+│   │   └── rest-api.spec.ts       # REST API test suite
 ├── utils/
 │   ├── test.ts                    # Playwright Test fixtures
 │   ├── rest-client.ts             # REST API client class
