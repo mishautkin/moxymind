@@ -59,6 +59,5 @@ module.exports = {
     'build/',
     'playwright-report/',
     'test-results/',
-    'test-lint.ts', // Ignore our test file
   ],
 };

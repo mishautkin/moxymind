@@ -7,7 +7,7 @@
 - [Technical task #2](#technical-task-2)
 - [Setup Instructions](#setup-instructions)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
+  - [Local Installation](#local-installation)
   - [Project Structure](#project-structure)
 - [Running Tests](#running-tests)
   - [Parallel Execution](#parallel-execution)
@@ -42,16 +42,24 @@ API test automation - [see `docs/`](./docs/rest-api.md).
 - Node.js (v16 or higher)
 - npm package manager
 
-### Installation
+### Local Installation
+
+1. Clone the repository:
 
 ```bash
-# Clone the repository
 git clone https://github.com/mishautkin/moxymind.git
 cd moxymind
+```
 
-# Install dependencies and playwright
+2. Install dependencies and playwright:
+
+```bash
 npm run setup:tests
 ```
+
+3. In the project root create `.env` file with variables from [Environment Variables](#environment-variables) section.
+
+
 
 ### Project Structure
 
